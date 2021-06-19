@@ -82,10 +82,12 @@
 
             <EditText
                 android:id="@+id/name_of_meal_new_meal"
-                android:layout_width="300dp"
+                android:layout_width="350dp"
                 android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="center"
                 android:autofillHints=""
-                android:hint="Name of meal"
+                android:hint="@string/name_of_meal"
                 android:inputType="text"
                 android:textColor="@color/black" />
 
@@ -119,26 +121,19 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:text="Items"
-                style="@style/TextAppearance.AppCompat.Widget.ActionBar.Subtitle"
-                android:textColor="@color/black" />
-
-            <TextView
                 android:id="@+id/add_new_item_new_meal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="+ Add new meal"
+                android:layout_marginTop="30dp"
+                android:text="+ Add new food item"
                 android:textColor="@color/black" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/new_meal_recyclerview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"/>
+                android:layout_margintop="10dp"
+                android:layout_marginBottom="10dp"/>
 
         </LinearLayout>
 

@@ -1,28 +1,17 @@
 package com.grace.calorieeye.view;
 
 
-import android.app.Dialog;
-import android.content.Context;
-import android.database.Cursor;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
-import androidx.appcompat.widget.Toolbar;
-import androidx.cursoradapter.widget.CursorAdapter;
-import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -33,7 +22,6 @@ import com.arlib.floatingsearchview.suggestions.model.SearchSuggestion;
 import com.grace.calorieeye.R;
 import com.grace.calorieeye.adapter.NewItemRecyclerAdapter;
 import com.grace.calorieeye.model.FoodNutrientsModel;
-import com.grace.calorieeye.model.NewItemsModel;
 import com.grace.calorieeye.model.SearchItemModel;
 import com.grace.calorieeye.model.SearchSuggestionModel;
 import com.grace.calorieeye.viewmodel.NewItemViewModel;
@@ -41,11 +29,11 @@ import com.grace.calorieeye.viewmodel.NewItemViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NewItemDialogFragment extends Fragment {
+public class NewItemFragment extends Fragment {
 
     FloatingSearchView newItemSearchView;
     RecyclerView newItemRecyclerView;
-    Button clearItemsBtn, logItemsBtn;
+    Button clearItemsBtn, saveItemsBtn;
     View view;
 
     NewItemRecyclerAdapter recyclerAdapter;
@@ -70,7 +58,7 @@ public class NewItemDialogFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-        view = inflater.inflate(R.layout.new_item_dialog, container, false);
+        view = inflater.inflate(R.layout.fragment_new_item, container, false);
 
         initViews();
 
@@ -81,7 +69,7 @@ public class NewItemDialogFragment extends Fragment {
         newItemSearchView = view.findViewById(R.id.new_item_searchView);
         newItemRecyclerView = view.findViewById(R.id.new_item_dialog_recyclerview);
         clearItemsBtn = view.findViewById(R.id.clear_items_dialog);
-        logItemsBtn = view.findViewById(R.id.log_items_dialog);
+        saveItemsBtn = view.findViewById(R.id.save_items_dialog);
 
         recyclerAdapter = new NewItemRecyclerAdapter(getContext());
         newItemRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -113,9 +101,30 @@ public class NewItemDialogFragment extends Fragment {
             }
         });
 
+        saveItemsBtn.setOnClickListener(v -> {
+
+            FragmentManager fragmentManager = getFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container,
+                    new NewMealFragment( newItemViewModel
+                            .getFoodNutrientsModelsArrayListMutableLiveData().getValue()))
+                    .addToBackStack("");
+            fragmentTransaction.commit();
+
+
+        });
+
+        clearItemsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                recyclerAdapter.setItemList(null);
+            }
+        });
+
     }
 
-    Observer<ArrayList<SearchItemModel>> searchItemObserver = new Observer<ArrayList<SearchItemModel>>() {
+    Observer<ArrayList<SearchItemModel>> searchItemObserver =
+            new Observer<ArrayList<SearchItemModel>>() {
         @Override
         public void onChanged(ArrayList<SearchItemModel> searchItemModels) {
 
@@ -134,12 +143,12 @@ public class NewItemDialogFragment extends Fragment {
         }
     };
 
-    Observer<ArrayList<FoodNutrientsModel>> foodNutrientObserver = new Observer<ArrayList<FoodNutrientsModel>>() {
+    Observer<ArrayList<FoodNutrientsModel>> foodNutrientObserver =
+            new Observer<ArrayList<FoodNutrientsModel>>() {
         @Override
         public void onChanged(ArrayList<FoodNutrientsModel> foodNutrientsModels) {
 
             recyclerAdapter.setItemList(foodNutrientsModels);
-
         }
     };
 

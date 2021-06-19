@@ -39,12 +39,12 @@
                     android:text="Clear" />
 
                 <Button
-                    android:id="@+id/log_items_dialog"
+                    android:id="@+id/save_items_dialog"
                     style="?android:attr/buttonBarButtonStyle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Log item" />
+                    android:text="Add item(s)" />
 
             </LinearLayout>
 
