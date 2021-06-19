@@ -4,6 +4,16 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="food_item_image">Food item image</string>
     <string name="name_of_meal">Name of meal</string>
+    <string name="email_hint">abc@gmail.com</string>
+    <string name="email_address">Email address</string>
+    <string name="password_hint">******</string>
+    <string name="password">Password</string>
+    <string name="register">Register</string>
+    <string name="sign_in">Sign In</string>
+    <string name="log_in">Log in</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="no_account">No account?</string>
+    <string name="i_have_an_account">I have an account</string>
 
     <string-array name="egg">
         <item>Large</item>

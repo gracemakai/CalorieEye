@@ -82,5 +82,7 @@ public class NewMealFragment extends Fragment {
             fragmentTransaction.commit();
 
         });
+
+
     }
 }
