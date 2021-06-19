@@ -2,4 +2,11 @@
     <string name="app_name">Calorie Eye</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="food_item_image">Food item image</string>
+
+    <string-array name="egg">
+        <item>Large</item>
+        <item>Medium</item>
+        <item>Small</item>
+    </string-array>
 </resources>

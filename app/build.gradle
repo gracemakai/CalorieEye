@@ -44,6 +44,18 @@ dependencies {
     // LiveData
     implementation "androidx.lifecycle:lifecycle-livedata:2.3.1"
 
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+
+    //SearchView
+    implementation 'com.github.arimorty:floatingsearchview:2.1.1'
+
+    //Picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+
+
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'

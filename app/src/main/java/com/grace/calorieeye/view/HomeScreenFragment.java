@@ -46,14 +46,11 @@ public class HomeScreenFragment extends Fragment {
         mealsRecyclerView = view.findViewById(R.id.meals_recyclerview);
         newMealFab = view.findViewById(R.id.new_meal_fab);
 
-        newMealFab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentManager fragmentManager = getChildFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.add(R.id.fragment_container, new NewMealFragment());
-                fragmentTransaction.commit();
-            }
+        newMealFab.setOnClickListener(v -> {
+            FragmentManager fragmentManager = getFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container, new NewMealFragment()).addToBackStack("");
+            fragmentTransaction.commit();
         });
     }
 }
