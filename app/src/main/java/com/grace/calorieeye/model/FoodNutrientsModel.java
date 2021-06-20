@@ -454,7 +454,19 @@ public class FullNutrient {
 
 }
 
-public class Metadata {}
+public class Metadata {
+    @SerializedName("is_raw_food")
+    @Expose
+    boolean rawFood;
+
+    public boolean isRawFood() {
+        return rawFood;
+    }
+
+    public void setRawFood(boolean rawFood) {
+        this.rawFood = rawFood;
+    }
+}
 
 public class Photo {
 

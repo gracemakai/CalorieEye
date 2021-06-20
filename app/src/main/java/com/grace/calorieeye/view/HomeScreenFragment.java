@@ -2,6 +2,7 @@ package com.grace.calorieeye.view;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -27,7 +28,7 @@ public class HomeScreenFragment extends Fragment {
     FloatingActionButton newMealFab;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         FragmentHomeScreenBinding fragmentHomeScreenBinding = DataBindingUtil
@@ -47,10 +48,16 @@ public class HomeScreenFragment extends Fragment {
         newMealFab = view.findViewById(R.id.new_meal_fab);
 
         newMealFab.setOnClickListener(v -> {
-            FragmentManager fragmentManager = getFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, new NewMealFragment()).addToBackStack("");
-            fragmentTransaction.commit();
+            newPage(new NewMealFragment());
         });
     }
+
+    private void newPage(Fragment fragment){
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, fragment)
+                .addToBackStack("");
+        fragmentTransaction.commit();
+    }
+
 }
