@@ -36,7 +36,6 @@ public class NewItemViewModel extends ViewModel {
 
     public NewItemViewModel() {
         searchItemArrayListMutableLiveData = new MutableLiveData<>();
-        foodNutrientsModelsArrayListMutableLiveData = new MutableLiveData<>();
         foodNutrientsModels = new ArrayList<>();
         newItemRepository = new NewItemRepository();
         foodNutrientsModelsArrayListMutableLiveData = newItemRepository

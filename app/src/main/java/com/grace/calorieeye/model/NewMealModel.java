@@ -4,7 +4,7 @@ import java.util.List;
 
 public class NewMealModel {
     String nameOfMeal, time, date, totalCalories, originalCalories, mealQuantity;
-    List<FoodNutrientsModel> foodNutrientsModels = null;
+    List<FoodNutrientsModel> foodNutrientsModels;
 
     public NewMealModel(String nameOfMeal, String time, String date, String totalCalories,
                         String originalCalories, String mealQuantity,
@@ -16,6 +16,9 @@ public class NewMealModel {
         this.originalCalories = originalCalories;
         this.mealQuantity = mealQuantity;
         this.foodNutrientsModels = foodNutrientsModels;
+    }
+
+    public NewMealModel() {
     }
 
     public String getNameOfMeal() {
